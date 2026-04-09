@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/mini_stl.dir/link.d CMakeFiles/mini_stl.dir/src/main.cpp.o -o mini_stl

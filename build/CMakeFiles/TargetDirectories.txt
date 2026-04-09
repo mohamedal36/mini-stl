@@ -1,0 +1,3 @@
+/home/altair/Documents/mini-stl/build/CMakeFiles/mini_stl.dir
+/home/altair/Documents/mini-stl/build/CMakeFiles/edit_cache.dir
+/home/altair/Documents/mini-stl/build/CMakeFiles/rebuild_cache.dir
