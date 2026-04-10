@@ -33,8 +33,10 @@ namespace mini_stl
 
         explicit Vector(size_type count, const_reference value = {})
         {
-            if (count == 0)
+            if (count == 0) {
+                *this = Vector();
                 return;
+            }
 
             start_ = allocator.allocate(count);
             end_of_storage_ = start_ + count;
@@ -45,14 +47,14 @@ namespace mini_stl
             }
             finish_ = end_of_storage_;
         }
-        size_t capacity() const noexcept { return end_of_storage_ - start_ };
-        size_t size() const noexcept { return finish_ - start_ };
-        bool empty() const noexcept { return finish_ == start_ };
+        size_type capacity() const noexcept { return end_of_storage_ - start_; };
+        size_type size() const noexcept { return finish_ - start_; };
+        bool empty() const noexcept { return finish_ == start_; };
         ~Vector() noexcept
         {
             if (start_)
             {
-                for (iterator it = start_; it < end_of_storage_; ++it)
+                for (iterator it = start_; it < finish_; ++it)
                 {
                     allocator.destroy(it);
                 }
@@ -81,11 +83,11 @@ namespace mini_stl
         {
             return finish_;
         }
-        const_iterator begin() noexcept
+        const_iterator begin() const noexcept
         {
             return start_;
         }
-        const_iterator end() noexcept
+        const_iterator end() const noexcept
         {
             return finish_;
         }
@@ -136,10 +138,46 @@ namespace mini_stl
             finish_++;
         }
         void pop_back() noexcept{
-            if (size() > 0) return;
+            if (size() == 0) return;
 
             allocator.destroy(--finish_);
         }
+        // Move
+        Vector(Vector&& other) noexcept : start_(other.start_), finish_(other.finish_), end_of_storage_(other.end_of_storage_){
+            other.start_ = nullptr;
+            other.finish_ = nullptr;
+            other.end_of_storage_ = nullptr;
+        }
+        // Copy
+        Vector(const Vector& other) {
+            if (other.empty())  {
+                *this = Vector();
+                return;
+            }
+            start_ = allocator.allocate(other.size());
+            finish_ = start_;
+            
+            for (size_type it = 0; it < other.size(); it++) {
+                allocator.construct(start_ + it, other[it]);
+                finish_++;
+            }
+            
+            end_of_storage_ = start_ + other.size();
+
+        }
+        Vector& operator=(const Vector& other) {
+
+        }
+        Vector& operator=(Vector&& other) {
+
+        }
+        reference operator[](size_type pos) {
+            return *(start_+pos);
+        }
+        const_reference operator[](size_type pos) const {
+            return *(start_+pos);
+        }
+        
     };
 
 } // namespace mini_stl
