@@ -64,19 +64,41 @@ CMAKE_BINARY_DIR = /home/altair/Documents/mini-stl/build
 
 # The main recursive "all" target.
 all: CMakeFiles/mini_stl.dir/all
+all: tests/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/mini_stl.dir/codegen
+codegen: tests/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: tests/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/mini_stl.dir/clean
+clean: tests/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory tests
+
+# Recursive "all" directory target.
+tests/all: tests/CMakeFiles/mini_stl_tests.dir/all
+.PHONY : tests/all
+
+# Recursive "codegen" directory target.
+tests/codegen: tests/CMakeFiles/mini_stl_tests.dir/codegen
+.PHONY : tests/codegen
+
+# Recursive "preinstall" directory target.
+tests/preinstall:
+.PHONY : tests/preinstall
+
+# Recursive "clean" directory target.
+tests/clean: tests/CMakeFiles/mini_stl_tests.dir/clean
+.PHONY : tests/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/mini_stl.dir
@@ -109,6 +131,38 @@ CMakeFiles/mini_stl.dir/codegen:
 CMakeFiles/mini_stl.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mini_stl.dir/build.make CMakeFiles/mini_stl.dir/clean
 .PHONY : CMakeFiles/mini_stl.dir/clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/mini_stl_tests.dir
+
+# All Build rule for target.
+tests/CMakeFiles/mini_stl_tests.dir/all:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/depend
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/altair/Documents/mini-stl/build/CMakeFiles --progress-num=3,4 "Built target mini_stl_tests"
+.PHONY : tests/CMakeFiles/mini_stl_tests.dir/all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/mini_stl_tests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/altair/Documents/mini-stl/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/mini_stl_tests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/altair/Documents/mini-stl/build/CMakeFiles 0
+.PHONY : tests/CMakeFiles/mini_stl_tests.dir/rule
+
+# Convenience name for target.
+mini_stl_tests: tests/CMakeFiles/mini_stl_tests.dir/rule
+.PHONY : mini_stl_tests
+
+# codegen rule for target.
+tests/CMakeFiles/mini_stl_tests.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/altair/Documents/mini-stl/build/CMakeFiles --progress-num=3,4 "Finished codegen for target mini_stl_tests"
+.PHONY : tests/CMakeFiles/mini_stl_tests.dir/codegen
+
+# clean rule for target.
+tests/CMakeFiles/mini_stl_tests.dir/clean:
+	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/clean
+.PHONY : tests/CMakeFiles/mini_stl_tests.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

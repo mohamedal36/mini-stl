@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/altair/Documents/mini-stl/build/CMakeFiles /home/altair/Documents/mini-stl/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /home/altair/Documents/mini-stl/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/altair/Documents/mini-stl/build/CMakeFiles /home/altair/Documents/mini-stl/build/tests//CMakeFiles/progress.marks
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/altair/Documents/mini-stl/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,68 +113,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/altair/Documents/mini-stl/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named mini_stl
+# Convenience name for target.
+tests/CMakeFiles/mini_stl_tests.dir/rule:
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tests/CMakeFiles/mini_stl_tests.dir/rule
+.PHONY : tests/CMakeFiles/mini_stl_tests.dir/rule
 
-# Build rule for target.
-mini_stl: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mini_stl
-.PHONY : mini_stl
-
-# fast build rule for target.
-mini_stl/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mini_stl.dir/build.make CMakeFiles/mini_stl.dir/build
-.PHONY : mini_stl/fast
-
-#=============================================================================
-# Target rules for targets named mini_stl_tests
-
-# Build rule for target.
-mini_stl_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mini_stl_tests
+# Convenience name for target.
+mini_stl_tests: tests/CMakeFiles/mini_stl_tests.dir/rule
 .PHONY : mini_stl_tests
 
 # fast build rule for target.
 mini_stl_tests/fast:
-	$(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/build
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/build
 .PHONY : mini_stl_tests/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+test_allocator.o: test_allocator.cpp.o
+.PHONY : test_allocator.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mini_stl.dir/build.make CMakeFiles/mini_stl.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+test_allocator.cpp.o:
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/test_allocator.cpp.o
+.PHONY : test_allocator.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+test_allocator.i: test_allocator.cpp.i
+.PHONY : test_allocator.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mini_stl.dir/build.make CMakeFiles/mini_stl.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+test_allocator.cpp.i:
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/test_allocator.cpp.i
+.PHONY : test_allocator.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+test_allocator.s: test_allocator.cpp.s
+.PHONY : test_allocator.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mini_stl.dir/build.make CMakeFiles/mini_stl.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+test_allocator.cpp.s:
+	cd /home/altair/Documents/mini-stl/build && $(MAKE) $(MAKESILENT) -f tests/CMakeFiles/mini_stl_tests.dir/build.make tests/CMakeFiles/mini_stl_tests.dir/test_allocator.cpp.s
+.PHONY : test_allocator.cpp.s
 
 # Help Target
 help:
@@ -185,11 +173,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... mini_stl"
 	@echo "... mini_stl_tests"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... test_allocator.o"
+	@echo "... test_allocator.i"
+	@echo "... test_allocator.s"
 .PHONY : help
 
 
@@ -201,6 +188,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/altair/Documents/mini-stl/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

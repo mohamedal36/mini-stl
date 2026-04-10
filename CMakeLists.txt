@@ -7,3 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(mini_stl src/main.cpp)
 
 target_include_directories(mini_stl PRIVATE include/)
+
+# Tests
+enable_testing()
+add_subdirectory(tests)

@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/mini_stl_tests.dir/link.d CMakeFiles/mini_stl_tests.dir/test_allocator.cpp.o -o mini_stl_tests
